@@ -1,0 +1,16 @@
+[[package]]
+category = "main"
+description = "Simple library for color and formatting to terminal"
+name = "colored"
+optional = false
+python-versions = "*"
+version = "1.4.2"
+
+[metadata]
+content-hash = "a8fc35d7eb4f0b5e0ff3887e91e84f1e4b3bb57955cfefa77e07d01ece473e54"
+python-versions = "^3.8"
+
+[metadata.files]
+colored = [
+    {file = "colored-1.4.2.tar.gz", hash = "sha256:056fac09d9e39b34296e7618897ed1b8c274f98423770c2980d829fd670955ed"},
+]
