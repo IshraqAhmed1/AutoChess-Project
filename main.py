@@ -12,7 +12,7 @@ def getch():
     tty.setraw(sys.stdin.fileno())
     ch = sys.stdin.read(1)
   finally:
-    termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    termios.tcsetattr(fd, termios.TCSADRAIN, oglold_settings)
   return ch
 
 class Player:
@@ -21,6 +21,7 @@ class Player:
     self.Health = 100
     self.Level = 6
     self.gold = 1000
+    self.storelist = []
     self.team = []
     self.teamC = []
     self.deadteam = []
@@ -373,7 +374,7 @@ class Player:
     global ghost
     start = time.time()        
     elapsed = 0   
-    storelevel(self.Level) 
+    self.storelevel() 
     print("""\nPress the "S" key to skip the round timer""")           
     while elapsed < 60:
       for x in self.team:
@@ -422,13 +423,256 @@ class Player:
         else:
           battle(red,blue,True)
 
+  def storelevel(self):
+    if self.Level == 1 or self.Level == 2:
+      ran = []
+      ran.append(random.choice(tier1))
+      giveitem(ran)
+      un1 = ran
+      ran = []
+      ran.append(random.choice(tier1))
+      giveitem(ran)
+      un2 = ran
+      ran = []
+      ran.append(random.choice(tier1))
+      giveitem(ran)
+      un3 = ran
+      ran = []
+      ran.append(random.choice(tier1))
+      giveitem(ran)
+      un4 = ran
+      ran = []
+      ran.append(random.choice(tier1))
+      giveitem(ran)
+      un5 = ran
+    elif self.Level == 3:
+      champs = []
+      for x in range(60):
+        ran = []
+        ran.append(random.choice(tier1))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(30):
+        ran = []
+        ran.append(random.choice(tier2))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(10):
+        ran = []
+        ran.append(random.choice(tier3))
+        giveitem(ran)
+        champs.append(ran)
+      un1 = random.choice(champs)
+      un2 = random.choice(champs)
+      un3 = random.choice(champs)
+      un4 = random.choice(champs)
+      un5 = random.choice(champs)
+    elif self.Level == 4:
+      champs = []
+      for x in range(50):
+        ran = []
+        ran.append(random.choice(tier1))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(30):
+        ran = []
+        ran.append(random.choice(tier2))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(15):
+        ran = []
+        ran.append(random.choice(tier3))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(5):
+        ran = []
+        ran.append(random.choice(tier4))
+        giveitem(ran)
+        champs.append(ran)
+      un1 = random.choice(champs)
+      un2 = random.choice(champs)
+      un3 = random.choice(champs)
+      un4 = random.choice(champs)
+      un5 = random.choice(champs)
+    elif self.Level == 5:
+      champs = []
+      for x in range(38):
+        ran = []
+        ran.append(random.choice(tier1))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(35):
+        ran = []
+        ran.append(random.choice(tier2))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(20):
+        ran = []
+        ran.append(random.choice(tier3))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(6):
+        ran = []
+        ran.append(random.choice(tier4))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(1):
+        ran = []
+        ran.append(random.choice(tier5))
+        giveitem(ran)
+        champs.append(ran)
+      un1 = random.choice(champs)
+      un2 = random.choice(champs)
+      un3 = random.choice(champs)
+      un4 = random.choice(champs)
+      un5 = random.choice(champs)
+    elif self.Level == 6:
+      champs = []
+      for x in range(25):
+        ran = []
+        ran.append(random.choice(tier1))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(35):
+        ran = []
+        ran.append(random.choice(tier2))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(25):
+        ran = []
+        ran.append(random.choice(tier3))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(10):
+        ran = []
+        ran.append(random.choice(tier4))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(5):
+        ran = []
+        ran.append(random.choice(tier5))
+        giveitem(ran)
+        champs.append(ran)
+      un1 = random.choice(champs)
+      un2 = random.choice(champs)
+      un3 = random.choice(champs)
+      un4 = random.choice(champs)
+      un5 = random.choice(champs)
+    elif self.Level == 7:
+      champs = []
+      for x in range(15):
+        ran = []
+        ran.append(random.choice(tier1))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(29):
+        ran = []
+        ran.append(random.choice(tier2))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(30):
+        ran = []
+        ran.append(random.choice(tier3))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(15):
+        ran = []
+        ran.append(random.choice(tier4))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(10):
+        ran = []
+        ran.append(random.choice(tier5))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(1):
+        ran = []
+        ran.append(random.choice(tier6))
+        giveitem(ran)
+        champs.append(ran)
+      un1 = random.choice(champs)
+      un2 = random.choice(champs)
+      un3 = random.choice(champs)
+      un4 = random.choice(champs)
+      un5 = random.choice(champs)
+    elif self.Level == 8:
+      champs = []
+      for x in range(10):
+        ran = []
+        ran.append(random.choice(tier1))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(20):
+        ran = []
+        ran.append(random.choice(tier2))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(30):
+        ran = []
+        ran.append(random.choice(tier3))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(23):
+        ran = []
+        ran.append(random.choice(tier4))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(15):
+        ran = []
+        ran.append(random.choice(tier5))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(2):
+        ran = []
+        ran.append(random.choice(tier6))
+        giveitem(ran)
+        champs.append(ran)
+      un1 = random.choice(champs)
+      un2 = random.choice(champs)
+      un3 = random.choice(champs)
+      un4 = random.choice(champs)
+      un5 = random.choice(champs)
+    elif self.Level == 9:
+      champs = []
+      for x in range(5):
+        ran = []
+        ran.append(random.choice(tier1))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(10):
+        ran = []
+        ran.append(random.choice(tier2))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(20):
+        ran = []
+        ran.append(random.choice(tier3))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(35):
+        ran = []
+        ran.append(random.choice(tier4))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(25):
+        ran = []
+        ran.append(random.choice(tier5))
+        giveitem(ran)
+        champs.append(ran)
+      for x in range(5):
+        ran = []
+        ran.append(random.choice(tier6))
+        giveitem(ran)
+        champs.append(ran)
+      un1 = random.choice(champs)
+      un2 = random.choice(champs)
+      un3 = random.choice(champs)
+      un4 = random.choice(champs)
+      un5 = random.choice(champs)
+    self.storelist = [un1,un2,un3,un4,un5]
+    print(self.storelist)
+
   def store(self,types,skip=""):
-    global un1
-    global un2
-    global un3
-    global un4
-    global un5
-    global storelist
     global elapsed
     global start
     global check
@@ -436,7 +680,7 @@ class Player:
     if types == "Player":
       while elapsed < 60:
         print("")          
-        for x in storelist:
+        for x in self.storelist:
           if x == "EMPTY":
             print("("+str(bruh)+")",x)
           if x[0] in tier1:
@@ -463,11 +707,11 @@ class Player:
         if char.lower() == "r":
           if self.gold >=2:
             self.gold = self.gold - 2
-            storelevel(self.Level)
+            self.storelevel()
           else:
             print("\nYou do not have enough gold to reroll!")
         if char == "1" or char == "2" or char == "3" or char == "4" or char == "5":
-          pers = storelist[int(char)-1]
+          pers = self.storelist[int(char)-1]
           if pers[0] in tier1:
             self.storesimp(pers,1,int(char)-1)
           elif pers[0] in tier2:
@@ -668,22 +912,6 @@ class Player:
 
 
   def purchase(self,unit,rarity,caro=False,back=False,skip=""):
-    global gHP
-    global gcMP
-    global gMP
-    global gAT
-    global gDF
-    global gMAT
-    global gMDF
-    global gSP
-    global gAC
-    global gEV
-    global gCT
-    global gAPN
-    global gMPN
-    global gMRG
-    global gGEN
-    global gSYN
     global ID
     global check
     if ((self.gold < rarity) and (caro != True)) and back == False:
@@ -1632,11 +1860,11 @@ class Player:
         gMPN = 0
         gMRG = 12
         gGEN = "Female"
-        gSYN = ["Black","Chill"]
+        gSYN = ["Black","Shy"]
       if unit[0] == "Ian":
         gHP = 1000
-        gcMP = 0
-        gMP = 100
+        gcMP = 25
+        gMP = 80
         gAT = 65
         gDF = 35
         gMAT = 1
@@ -1901,13 +2129,13 @@ class Entity:
       if x == "Honjo Masamune":
         print(fore.YELLOW_1+style.BOLD+"Honjo Masamune"+style.RESET+fore.YELLOW_1,"(Attack + Critical):"+style.RESET,"Increases armor penetration(APN) by +35 when the user's health(HP) is above 50%.")
       if x == "Thornmail":
-        print(fore.YELLOW_1+style.BOLD+"Thornmail"+style.RESET+fore.YELLOW_1,"(Defense + Defense):"+style.RESET,"Reflect 10% of raw melee damage taken back to enemy as magic damage. This damage cannot miss, does not proc barriers, and cannot kill an enemy. This does not proc if the user dies from the enemy attack.")
+        print(fore.YELLOW_1+style.BOLD+"Thornmail"+style.RESET+fore.YELLOW_1,"(Defense + Defense):"+style.RESET,"Reflect 20% of raw melee damage taken back to enemy as magic damage. This damage cannot miss, does not proc barriers, and cannot kill an enemy. This does not proc if the user dies from the enemy attack.")
       if x == "Flaming Cinders":
         print(fore.YELLOW_1+style.BOLD+"Flaming Cinders"+style.RESET+fore.YELLOW_1,"(Defense + Health):"+style.RESET,"Anyone who attacks the user has their healing reduced by 50% for 3 turns. This does not proc if the user dies, and does not stack with Grand.")
       if x == "The Gambit":
         print(fore.YELLOW_1+style.BOLD+"The Gambit"+style.RESET+fore.YELLOW_1,"(Defense + Mana):"+style.RESET,"Increases mana(MP) gained by being attacked by 70%.")
-      if x == "Chastity Belt":
-        print(fore.YELLOW_1+style.BOLD+"Chastity Belt"+style.RESET+fore.YELLOW_1,"(Defense + Magic Attack):"+style.RESET,"Deal 20% more damage to Males.")
+      if x == "Feminism":
+        print(fore.YELLOW_1+style.BOLD+"Feminism"+style.RESET+fore.YELLOW_1,"(Defense + Magic Attack):"+style.RESET,"Deal 20% more damage to Males.")
       if x == "Obscene Wear":
         print(fore.YELLOW_1+style.BOLD+"Obscene Wear"+style.RESET+fore.YELLOW_1,"(Defense + Magic Defense):"+style.RESET,"Taunt all enemies at the beginning of battle for 1 turn.")
       if x == "Miller's Hearing Aid":
@@ -1919,7 +2147,7 @@ class Entity:
       if x == "Care Package":
         print(fore.YELLOW_1+style.BOLD+"Care Package"+style.RESET+fore.YELLOW_1,"(Health + Mana):"+style.RESET,"Randomly heal an ally for 10% of their missing health(HP) per turn. Only procs if the user lives on their turn.")
       if x == "Grand":
-        print(fore.YELLOW_1+style.BOLD+"Grand"+style.RESET+fore.YELLOW_1,"(Health + Magic Attack):"+style.RESET,"The user’s ability lowers the healing of any enemy hit by 50% for 10 turns. This does not stack with Flaming Cinders.")
+        print(fore.YELLOW_1+style.BOLD+"Grand"+style.RESET+fore.YELLOW_1,"(Health + Magic Attack):"+style.RESET,"The user’s ability damage lowers the healing of any enemy hit by 50% for 10 turns. This does not stack with Flaming Cinders.")
       if x == "Devourer":
         print(fore.YELLOW_1+style.BOLD+"Devourer"+style.RESET+fore.YELLOW_1,"(Health + Magic Defense):"+style.RESET,"Heal for 20% of missing health(HP) every time any enemy is defeated.")
       if x == "Cleats":
@@ -2002,7 +2230,7 @@ class Entity:
       if "Defense" in mix and "Mana" in mix:
         self.items.append("The Gambit")
       if "Defense" in mix and "Magic Attack" in mix:
-        self.items.append("Chastity Belt")
+        self.items.append("Feminism")
       if "Defense" in mix and "Magic Defense" in mix:
         self.items.append("Obscene Wear")
       if "Defense" in mix and "Speed" in mix:
@@ -2078,7 +2306,8 @@ class Entity:
         self.pMAT = self.pMAT * (1+(0.1*self.fferv))
 
     if self.chilly > 0:
-      self.pSP = self.pSP * 0.6
+      if self.runhigh <= 0:
+        self.pSP = self.pSP * 0.6
     
     if ally.mex >= 2:
       if ally.mex >=2 and ally.mex < 4 and "Mexican" in self.SYN:
@@ -2239,7 +2468,8 @@ class Entity:
     #Map effect
 
     if self.chilled[0] > 0:
-      self.pSP = self.pSP * (1-(self.chilled[2]*(0.2+(0.0125*self.chilled[1].cLV))))
+      if self.runhigh <= 0:
+        self.pSP = self.pSP * (1-(self.chilled[2]*(0.2+(0.0125*self.chilled[1].cLV))))
 
     #Normal effect
 
@@ -2258,7 +2488,8 @@ class Entity:
       self.pMAT = self.pMAT * 0.75
     
     if self.bleedt >0:    #On Turn Debuff
-      self.pSP = self.pSP * 0.75
+      if self.runhigh <= 0:
+        self.pSP = self.pSP * 0.75
 
     if self.poisont >0:   #On Turn Debuff
       self.pDF = self.pDF * 0.75
@@ -2303,7 +2534,8 @@ class Entity:
       self.fSP = self.fSP + (10+(2*self.anime[1].cLV))
 
     if self.drift[0] > 0:
-      self.psP = self.pSP * (0.5-(0.0375*self.drift[1].cLV))
+      if self.runhigh <= 0:
+        self.psP = self.pSP * (0.5-(0.0375*self.drift[1].cLV))
 
     if self.greased[0] > 0:    #On hit debuff
       self.fEV = self.fEV - (40+(10*self.greased[1].cLV))
@@ -2364,7 +2596,8 @@ class Entity:
         self.pMDF = self.pMDF * (self.confection[3]*(1.1+(0.02*self.confection[1].cLV)))
 
     if self.crips[0] > 0:
-      self.pSP = self.pSP * (1-(self.crips[2]*(0.2+(0.02*self.crips[1].cLV))))
+      if self.runhigh <= 0:
+        self.pSP = self.pSP * (1-(self.crips[2]*(0.2+(0.02*self.crips[1].cLV))))
     
     if self.touched[0] > 0:
       self.pAC = self.pAC * (1-(self.touched[2]*(0.2+(0.03*self.touched[1].cLV))))
@@ -2398,8 +2631,11 @@ class Entity:
       self.fSP = self.fSP + self.chin
 
     for x in allfighters:
-      if turncount > 60:
-        x.pAT = x.pAT * (1+(0.01*(turncount-60)))
+      if turncount > (7.5*len(allfighters)):
+        x.pAT = x.pAT * 1.5
+        x.pMAT = x.pMAT * 1.5
+        x.healmod = x.healmod * (2/3)
+        #x.pAT = x.pAT * (1+(0.01*(turncount-60)))
         #x.pMAT = x.pMAT * (1+(0.01*(turncount-90)))
         #x.healmod = x.healmod * (1-((1/90)*(turncount-90)))
         #if x.healmod < 0:
@@ -2581,7 +2817,7 @@ class Entity:
         if ene.cHP > 0:
           self.prehiteffects(ene)
           sett = ene.cHP
-          dmg = (0.1*dmg)
+          dmg = (0.2*dmg)
           ene.defense(self,"Magical",dmg)
           if ene.cHP <= 0:
             ene.cHP = 1
@@ -3131,12 +3367,12 @@ class Entity:
         res = attr("reset")
         time.sleep(0.2)
         print("\n"+self.color+self.NAME+res+"'s Anatomy of Hearts sends out a pulse towards the enemies!")
-      for x in range(3):
+      for x in range(2):
         hit = random.choice(peep)
         peep.remove(hit)
         self.prehiteffects(hit)
         sett = hit.cHP
-        dmg = (0.075*hit.cHP)
+        dmg = (0.05*hit.cHP)
         hit.defense(self,"Magical",dmg)
         if hit.cHP <= 0:
           hit.cHP = 1
@@ -3557,7 +3793,7 @@ class Entity:
       if turncount == 0:
         self.fcMP = self.fcMP + 15
 
-    if "Chastity Belt" in self.items:
+    if "Feminism" in self.items:
       self.fDF = self.fDF + 20
       self.fMAT = self.fMAT + 0.1
 
@@ -3755,7 +3991,7 @@ class Entity:
   def defense(self,enemy,ty,dmg):
     if "Thotslayer" in enemy.items and self.GEN == "Female":
       dmg = dmg * 1.2
-    if "Chastity Belt" in enemy.items and self.GEN == "Male":
+    if "Feminism" in enemy.items and self.GEN == "Male":
       dmg = dmg * 1.2
     if "Physical" in ty:
       if enemy.cAPN > self.cDF or self.cDF <= 0:
@@ -4021,23 +4257,17 @@ class Entity:
             self.seal(ally,enemy,skip="Skip")
           else:
             self.seal(ally,enemy)
-        elif self.NAME == "Alvaro" and (self.fcMP == self.fMP or self.hogrider == 2):
+        elif self.NAME == "Alvaro" and self.hogrider != 1 and (self.fcMP == self.fMP or self.hogrider == 2):
           if skip == "Skip":
             if self.hogrider == 0 and self.fcMP == self.fMP:
               self.thecall(ally,skip="Skip")
             elif self.hogrider == 2:
               ski = 1
               self.hornofbattle(enemy,skip="Skip")
-            elif self.fcMP == self.fMP and self.hogrider == 1:
-              ski = 1
-              if skip == "Skip":
-                self.attacksys(self.attack,"Auto",enemy,"Skip")
-              else:
-                self.attacksys(self.attack,"Auto",enemy)
           else:
-            if self.hogrider == 0:
+            if self.hogrider == 0 and self.fcMP == self.fMP:
               self.thecall(ally)
-            else:
+            elif self.hogrider == 2:
               ski = 1
               self.hornofbattle(enemy)
         elif self.NAME == "Jahir" and self.fcMP == self.fMP:
@@ -4267,9 +4497,9 @@ class Entity:
             self.defaultdance(enemy)  
         elif self.NAME == "Ian" and self.fcMP == self.fMP:
           if skip == "Skip":
-            self.tremors(enemy,skip="Skip")
+            self.blitz(enemy,skip="Skip")
           else:
-            self.tremors(enemy)    
+            self.blitz(enemy)    
         elif self.NAME == "Alice" and self.fcMP == self.fMP:
           if skip == "Skip":
             self.grace(ally,"Skip")
@@ -4912,21 +5142,21 @@ class Entity:
   def record(self,ally,targ,skip=""):
     global sett
     res = attr("reset")
-    nig = []
+    tempteam = []
     for x in targ.team:
-      nig.append(x)
-    if len(nig) > 2:
-      di = (len(nig)-2)
+      tempteam.append(x)
+    if len(tempteam) > 2:
+      di = (len(tempteam)-2)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
     if skip != "Skip":
       time.sleep(0.5)
       print("\n"+self.color+self.NAME+res,"releases all the damage she recorded onto select enemies!")
     total = 0
     for x in ally.team:
       total = total + x.totaldamage
-    for x in nig:
+    for x in tempteam:
       self.prehiteffects(x)
       diff = x.cEV - self.cAC
       if skip != "Skip":
@@ -4954,29 +5184,29 @@ class Entity:
           x.onhittimersdefense(self,0,dmg,"Magical Ranged",skip="Skip")
     
   def godandanime(self,ally,skip=""):
-    nig = []
+    tempteam = []
     remain = []
     for x in ally.team:
       if x.cHP != x.fHP:
-        nig.append(x.cHP/x.fHP) 
+        tempteam.append(x.cHP/x.fHP) 
       else:
         remain.append(x)
-    nig.sort()
+    tempteam.sort()
     if skip != "Skip":
       res = attr("reset")
       time.sleep(0.5)
       print("\n"+self.color+self.NAME+res,"calls upon the power of god and anime to invigorate his allies!")
     for x in range(3):
       for y in ally.team:
-        if len(nig) == 0:
+        if len(tempteam) == 0:
           break
-        if (y.cHP/y.fHP) == nig[0]:
+        if (y.cHP/y.fHP) == tempteam[0]:
           if "Weeb" in y.SYN and ally.wee >=3:
-            bruh = nig.count(y.cHP/y.fHP)
+            bruh = tempteam.count(y.cHP/y.fHP)
             for z in range(bruh):
-              nig.remove(nig[0])
+              tempteam.remove(tempteam[0])
           else:
-            nig.remove(nig[0])
+            tempteam.remove(tempteam[0])
           selfsett = y.cHP
           y.cHP = y.cHP + round(y.healmod*self.cMAT*(500+(100*self.cLV)))
           if y.cHP > y.fHP:
@@ -4986,7 +5216,7 @@ class Entity:
             time.sleep(0.2)
             print("\n"+y.color+y.NAME+res,"receives blessings, recovering",fore.MEDIUM_SPRING_GREEN+str(y.cHP-selfsett)+style.RESET,"health and gaining increased speed! They have",y.cHP,"health now!")
           break
-      if len(nig) == 0 and len(remain) > 0:
+      if len(tempteam) == 0 and len(remain) > 0:
         pers = random.choice(remain)
         remain.remove(pers)
         selfsett = pers.cHP
@@ -4994,7 +5224,7 @@ class Entity:
         if skip != "Skip":
           time.sleep(0.2)
           print("\n"+pers.color+pers.NAME+res,"receives blessings, gaining increased speed!")
-      elif len(nig) == 0 and len(remain) == 0:
+      elif len(tempteam) == 0 and len(remain) == 0:
         break
       
 
@@ -5010,18 +5240,18 @@ class Entity:
   def defaultdance(self,targ,skip=""):
     global sett
     res = attr("reset")
-    nig = []
+    tempteam = []
     for x in targ.team:
-      nig.append(x)
-    if len(nig) > 3:
-      di = (len(nig)-3)
+      tempteam.append(x)
+    if len(tempteam) > 3:
+      di = (len(tempteam)-3)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
     if skip != "Skip":
       time.sleep(0.5)
       print("\n"+self.color+self.NAME+res, "does the default dance!")
-    for x in nig:
+    for x in tempteam:
       self.prehiteffects(x)
       diff = x.cEV - self.cAC
       if skip != "Skip":
@@ -5049,54 +5279,119 @@ class Entity:
         else:
           x.onhittimersdefense(self,0,dmg,"Magical Ranged",skip="Skip")
 
-  def tremors(self,targ,skip=""):
+  def blitz(self,targ,skip=""):
     global sett
-    if skip != "Skip":
+    reset = 0
+    targets = targ.team.copy()
+    stacks = 0
+    self.SP += 1
+    while reset == 0:
+      enemy = random.choice(targets)
+      targets.remove(enemy)
+      self.prehiteffects(enemy)
+      diff = enemy.cEV - self.cAC
+      CT = random.randint(1,100)
       res = attr("reset")
-      time.sleep(0.5)
-      print("\n"+self.color+self.NAME+res, "sends tremors through the ground!")
-    for x in targ.team:
-      self.prehiteffects(x)
-      diff = x.cEV - self.cAC
-      stunc = round(self.cMAT*50)
-      if skip != "Skip":
-        time.sleep(0.1)
       if random.randint(1,100) <= diff:
         if skip != "Skip":
-          print("\n"+x.color+x.NAME+res,"jumps off the ground before they can fall!")
-          x.specialdodgecases(self,0.1,"Physical Ranged")
+          time.sleep(0.5)
+          print("\n"+self.color+self.NAME+res,"tries to blitz",enemy.color+enemy.NAME+res+", but they see it coming!")
+          enemy.specialdodgecases(self,0.2,"Physical Melee",CT)
         else:
-          x.specialdodgecases(self,0,"Physical Ranged",skip="Skip")
+          enemy.specialdodgecases(self,0,"Physical Melee",CT,skip="Skip")
       else:
-        sett = x.cHP
-        dmg = ((1.25+(0.25*self.cLV))*self.cAT)
-        x.defense(self,"Physical",dmg)
-        if random.randint(0,100) <= stunc:
-          x.tremstun = 1
-          if skip != "Skip":
-            if x.cHP > 0:
-              if (sett-x.cHP) == 0:
-                print("\n"+x.color+x.NAME+res,"topples over, but takes no damage!")
-              else:
-                print("\n"+x.color+x.NAME+res,"topples over, taking",fore.ORANGE_1+str(sett-x.cHP)+style.RESET,"damage!",x.NAME,"has",x.cHP,"health remaining!")
-            else:
-              print("\n"+x.color+x.NAME+res,"topples over, taking",fore.ORANGE_1+str(sett-x.cHP)+style.RESET,"damage!",x.NAME,"falls...")
-            x.onhittimersdefense(self,0.1,dmg,"Physical Ranged")
+        sett = enemy.cHP
+        if self.cSP > enemy.cSP+25:
+          enemy.tremstun = 1
+        if CT <= self.cCT:
+          if self.cSP > enemy.cSP:
+            dmg = (1+(((0.1+(0.01*self.cLV))*(self.cSP-enemy.cSP))))*self.cAT*self.CTdmg*(1+((0.2*stacks*self.cMAT)))
           else:
-            x.onhittimersdefense(self,0,dmg,"Physical Ranged",skip="Skip")
+            dmg = self.cAT*self.CTdmg*(1+((0.2*stacks*self.cMAT)))
+          enemy.defense(self,"Physical",dmg)
+          if skip != "Skip":
+            time.sleep(0.2)
+            if enemy.cHP >0:
+              if (sett-enemy.cHP) == 0:
+                print("\n"+self.color+self.NAME+res,"blitzes",enemy.color+enemy.NAME+res+" at breakneck speeds, but deals no damage1")
+              else:
+                print("\n"+self.color+self.NAME+res,"blitzes",enemy.color+enemy.NAME+res+" at breakneck speeds, dealing",fore.ORANGE_1 + style.BOLD+ str(sett-enemy.cHP) + style.RESET,"damage!",enemy.NAME,"has",enemy.cHP,"health remaining!")
+            else:
+              print("\n"+self.color+self.NAME+res,"blitzes",enemy.color+enemy.NAME+res+" at breakneck speeds, dealing",fore.ORANGE_1 + style.BOLD+ str(sett-enemy.cHP) + style.RESET,"damage!",enemy.NAME,"falls...")
+            enemy.onhittimersdefense(self,0.2,dmg,"Critical Physical Melee")
+          else:
+            enemy.onhittimersdefense(self,0,dmg,"Critical Physical Melee",skip="Skip")
         else:
-          x.tremsl = 2
-          if skip != "Skip":
-            if x.cHP > 0:
-              if (sett-x.cHP) == 0:
-                print("\n"+x.color+x.NAME+res,"trembles, but takes no damage!")
-              else:
-                print("\n"+x.color+x.NAME+res,"trembles, taking",fore.ORANGE_1+str(sett-x.cHP)+style.RESET,"damage!",x.NAME,"has",x.cHP,"health remaining!")
-            else:
-              print("\n"+x.color+x.NAME+res,"trembles, taking",fore.ORANGE_1+str(sett-x.cHP)+style.RESET,"damage!",x.NAME,"falls...")
-            x.onhittimersdefense(self,0.1,dmg,"Physical Ranged")
+          if self.cSP > enemy.cSP:
+            dmg = (1+(((0.1+(0.01*self.cLV))*(self.cSP-enemy.cSP))))*self.cAT*(1+((0.2*stacks*self.cMAT)))
           else:
-            x.onhittimersdefense(self,0,dmg,"Physical Ranged",skip="Skip")
+            dmg = self.cAT*(1+((0.2*stacks*self.cMAT)))
+          enemy.defense(self,"Physical",dmg)
+          if skip != "Skip":
+            time.sleep(0.2)
+            if enemy.cHP >0:
+              if (sett-enemy.cHP) == 0:
+                print("\n"+self.color+self.NAME+res,"blitzes",enemy.color+enemy.NAME+res+", but deals no damage1")
+              else:
+                print("\n"+self.color+self.NAME+res,"blitzes",enemy.color+enemy.NAME+res+", dealing",fore.ORANGE_1 + str(sett-enemy.cHP) + style.RESET,"damage!",enemy.NAME,"has",enemy.cHP,"health remaining!")
+            else:
+              print("\n"+self.color+self.NAME+res,"blitzes",enemy.color+enemy.NAME+res+", dealing",fore.ORANGE_1 + str(sett-enemy.cHP) + style.RESET,"damage!",enemy.NAME,"falls...")
+            enemy.onhittimersdefense(self,0.2,dmg,"Critical Physical Melee")
+          else:
+            enemy.onhittimersdefense(self,0,dmg,"Critical Physical Melee",skip="Skip")
+        if enemy.cHP > 0:
+          reset = 1
+        else:
+          stacks += 1
+
+ # def tremors(self,targ,skip=""):
+   # global sett
+   # if skip != "Skip":
+     # res = attr("reset")
+      #time.sleep(0.5)
+      #print("\n"+self.color+self.NAME+res, "sends tremors through the ground!")
+    #for x in targ.team:
+     # self.prehiteffects(x)
+     # diff = x.cEV - self.cAC
+     # stunc = round(self.cMAT*50)
+      #if skip != "Skip":
+        #time.sleep(0.1)
+      #if random.randint(1,100) <= diff:
+        #if skip != "Skip":
+          #print("\n"+x.color+x.NAME+res,"jumps off the ground before they can fall!")
+          #x.specialdodgecases(self,0.1,"Physical Ranged")
+        #else:
+          #x.specialdodgecases(self,0,"Physical Ranged",skip="Skip")
+     # else:
+        #sett = x.cHP
+       # dmg = ((1.25+(0.25*self.cLV))*self.cAT)
+        #x.defense(self,"Physical",dmg)
+        #if random.randint(0,100) <= stunc:
+         # x.tremstun = 1
+         ## if skip != "Skip":
+          #  if x.cHP > 0:
+            #  if (sett-x.cHP) == 0:
+             #   print("\n"+x.color+x.NAME+res,"topples over, but takes no damage!")
+              #else:
+               # print("\n"+x.color+x.NAME+res,"topples over, taking",fore.ORANGE_1+str(sett-x.cHP)+style.RESET,"damage!",x.NAME,"has",x.cHP,"health remaining!")
+           # else:
+            #  print("\n"+x.color+x.NAME+res,"topples over, taking",fore.ORANGE_1+str(sett-x.cHP)+style.RESET,"damage!",x.NAME,"falls...")
+           # x.onhittimersdefense(self,0.1,dmg,"Physical Ranged")
+          #else:
+           # x.onhittimersdefense(self,0,dmg,"Physical Ranged",skip="Skip")
+        #else:
+         # x.tremsl = 2
+          #if skip != "Skip":
+            #if x.cHP > 0:
+              #if (sett-x.cHP) == 0:
+               # print("\n"+x.color+x.NAME+res,"trembles, but takes no damage!")
+              #else:
+                #print("\n"+x.color+x.NAME+res,"trembles, taking",fore.ORANGE_1+str(sett-x.cHP)+style.RESET,"damage!",x.NAME,"has",x.cHP,"health remaining!")
+            #else:
+              #print("\n"+x.color+x.NAME+res,"trembles, taking",fore.ORANGE_1+str(sett-x.cHP)+style.RESET,"damage!",x.NAME,"falls...")
+            #x.onhittimersdefense(self,0.1,dmg,"Physical Ranged")
+          #else:
+           # x.onhittimersdefense(self,0,dmg,"Physical Ranged",skip="Skip")
 
   def grace(self,ally,skip=""):
     for x in ally.team:
@@ -5109,17 +5404,17 @@ class Entity:
   def egirl(self,targ,skip=""):
     global sett
     res = attr("reset")
-    nig = []
+    tempteam = []
     for x in targ.team:
-      nig.append(x)
-    if len(nig) > 3:
-      di = (len(nig)-3)
+      tempteam.append(x)
+    if len(tempteam) > 3:
+      di = (len(tempteam)-3)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
     hit = 0
     print("\n"+self.color+self.NAME+res,"begs the enemies for stream donations for her twitch channel!")
-    for x in nig:
+    for x in tempteam:
       self.prehiteffects(x)
       diff = x.cEV - self.cAC
       if skip != "Skip":
@@ -5162,8 +5457,9 @@ class Entity:
       time.sleep(0.5)
       print("\n"+self.color+self.NAME+res,"sounds the horns of battle, increasing everyone's physical attack!")
 
-  def hornofbattle(self,enemy,skip=""):
+  def hornofbattle(self,targ,skip=""):
     global sett
+    self.hogrider = 0
     if skip != "Skip":
       res = attr("reset")
       time.sleep(0.5)
@@ -5227,19 +5523,19 @@ class Entity:
 
   def grootroot(self,targ,skip=""):
     global sett
-    nig = []
+    tempteam = []
     for x in targ.team:
-      nig.append(x)
-    if len(nig) > 6:
-      di = (len(nig)-6)
+      tempteam.append(x)
+    if len(tempteam) > 6:
+      di = (len(tempteam)-6)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
     if skip != "Skip":
       res = attr("reset")
       time.sleep(0.5)
       print("\n"+self.color+self.NAME+res, "sends branches through the ground!")
-    for x in nig:
+    for x in tempteam:
       self.prehiteffects(x)
       diff = x.cEV - self.cAC
       if skip != "Skip":
@@ -5269,18 +5565,18 @@ class Entity:
 
   def evileye(self,targ,skip=""):
     res = attr("reset")
-    nig = []
+    tempteam = []
     for x in targ.team:
-      nig.append(x)
-    if len(nig) > 4:
-      di = (len(nig)-4)
+      tempteam.append(x)
+    if len(tempteam) > 4:
+      di = (len(tempteam)-4)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
     if skip != "Skip":
       time.sleep(0.5)
       print("\n"+self.color+self.NAME+res, "casts the evil eye upon the enemies!")
-    for x in nig:
+    for x in tempteam:
       self.prehiteffects(x)
       diff = x.cEV - self.cAC
       if skip != "Skip":
@@ -5429,19 +5725,19 @@ class Entity:
   def notthatdeep(self,targ,skip=""):
     global sett
     res = attr("reset")
-    nig = []
+    tempteam = []
     for x in targ.team:
       if x.drift[0] == 0:
-        nig.append(x)
-    if len(nig) > 3:
-      di = (len(nig)-3)
+        tempteam.append(x)
+    if len(tempteam) > 3:
+      di = (len(tempteam)-3)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
     if skip != "Skip":
       time.sleep(0.5)
       print("\n"+self.color+self.NAME+res, "states that it ain't that deep, echoing across the battlefield!")
-    for x in nig:
+    for x in tempteam:
       self.prehiteffects(x)
       diff = x.cEV - self.cAC
       if skip != "Skip":
@@ -5530,18 +5826,18 @@ class Entity:
   def breakdown(self,targ,skip=""):
     global sett
     res = attr("reset")
-    nig = []
+    tempteam = []
     for x in targ.team:
-      nig.append(x)
-    if len(nig) > 3:
-      di = (len(nig)-3)
+      tempteam.append(x)
+    if len(tempteam) > 3:
+      di = (len(tempteam)-3)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
     if skip != "Skip":
       time.sleep(0.5)
       print("\n"+self.color+self.NAME+res, "breaks down in stress, screaming across the battlefield!")
-    for x in nig:
+    for x in tempteam:
       self.prehiteffects(x)
       diff = x.cEV - self.cAC
       if skip != "Skip":
@@ -5766,15 +6062,15 @@ class Entity:
   def cripple(self,targ,skip=""):
     global sett
     res = attr("reset")
-    nig = []
+    tempteam = []
     for x in targ.team:
-      nig.append(x)
-    if len(nig) > 3:
-      di = (len(nig)-3)
+      tempteam.append(x)
+    if len(tempteam) > 3:
+      di = (len(tempteam)-3)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
-    for x in nig:
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
+    for x in tempteam:
       self.prehiteffects(x)
       diff = x.cEV - self.cAC
       if skip != "Skip":
@@ -5804,14 +6100,14 @@ class Entity:
 
   def seal(self,ally,targ,skip=""):
     res = attr("reset")
-    nig = []
+    tempteam = []
     for x in targ.team:
-      nig.append(x)
-    if len(nig) > 3:
-      di = (len(nig)-3)
+      tempteam.append(x)
+    if len(tempteam) > 3:
+      di = (len(tempteam)-3)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
     if ally.ben >= 2:
       for x in ally.team:
         if "Bengali" in x.SYN and x.GEN == "Female":
@@ -5821,7 +6117,7 @@ class Entity:
     if skip != "Skip":  
       time.sleep(0.5)
       print("\n"+self.color+self.NAME+res,"seals the ability of 3 enemies for 5 turns!")
-    for x in nig:
+    for x in tempteam:
       x.silenced = 6
       if skip != "Skip":
         time.sleep(0.1)
@@ -5919,15 +6215,15 @@ class Entity:
   def megapunch(self,targ,skip=""):
     global sett
     res = attr("reset")
-    nig = []
+    tempteam = []
     for x in targ.team:
-      nig.append(x)
-    if len(nig) > 3:
-      di = (len(nig)-3)
+      tempteam.append(x)
+    if len(tempteam) > 3:
+      di = (len(tempteam)-3)
       for x in range(di):
-        uni = random.choice(nig)
-        nig.remove(uni)
-    for x in nig:
+        uni = random.choice(tempteam)
+        tempteam.remove(uni)
+    for x in tempteam:
       self.prehiteffects(x)
       diff = x.cEV - self.cAC
       if skip != "Skip":
@@ -6116,7 +6412,7 @@ def carousel(types=""):
     t5.append(x)
   carousellist = []
   time.sleep(0.5)
-  print("\nThe carousel begins!\n")
+  print("\nPick a free character!\n")
   time.sleep(0.5)
   if types == "Start":
     for x in range(2):
@@ -6302,262 +6598,6 @@ def giveitem(ran):
     ran.append(random.choice(items))
   return ran
 
-def storelevel(level):
-  global un1
-  global un2
-  global un3 
-  global un4
-  global un5
-  global storelist
-  if level == 1 or level == 2:
-    ran = []
-    ran.append(random.choice(tier1))
-    giveitem(ran)
-    un1 = ran
-    ran = []
-    ran.append(random.choice(tier1))
-    giveitem(ran)
-    un2 = ran
-    ran = []
-    ran.append(random.choice(tier1))
-    giveitem(ran)
-    un3 = ran
-    ran = []
-    ran.append(random.choice(tier1))
-    giveitem(ran)
-    un4 = ran
-    ran = []
-    ran.append(random.choice(tier1))
-    giveitem(ran)
-    un5 = ran
-  elif level == 3:
-    champs = []
-    for x in range(60):
-      ran = []
-      ran.append(random.choice(tier1))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(30):
-      ran = []
-      ran.append(random.choice(tier2))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(10):
-      ran = []
-      ran.append(random.choice(tier3))
-      giveitem(ran)
-      champs.append(ran)
-    un1 = random.choice(champs)
-    un2 = random.choice(champs)
-    un3 = random.choice(champs)
-    un4 = random.choice(champs)
-    un5 = random.choice(champs)
-  elif level == 4:
-    champs = []
-    for x in range(50):
-      ran = []
-      ran.append(random.choice(tier1))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(30):
-      ran = []
-      ran.append(random.choice(tier2))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(15):
-      ran = []
-      ran.append(random.choice(tier3))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(5):
-      ran = []
-      ran.append(random.choice(tier4))
-      giveitem(ran)
-      champs.append(ran)
-    un1 = random.choice(champs)
-    un2 = random.choice(champs)
-    un3 = random.choice(champs)
-    un4 = random.choice(champs)
-    un5 = random.choice(champs)
-  elif level == 5:
-    champs = []
-    for x in range(38):
-      ran = []
-      ran.append(random.choice(tier1))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(35):
-      ran = []
-      ran.append(random.choice(tier2))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(20):
-      ran = []
-      ran.append(random.choice(tier3))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(6):
-      ran = []
-      ran.append(random.choice(tier4))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(1):
-      ran = []
-      ran.append(random.choice(tier5))
-      giveitem(ran)
-      champs.append(ran)
-    un1 = random.choice(champs)
-    un2 = random.choice(champs)
-    un3 = random.choice(champs)
-    un4 = random.choice(champs)
-    un5 = random.choice(champs)
-  elif level == 6:
-    champs = []
-    for x in range(25):
-      ran = []
-      ran.append(random.choice(tier1))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(35):
-      ran = []
-      ran.append(random.choice(tier2))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(25):
-      ran = []
-      ran.append(random.choice(tier3))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(10):
-      ran = []
-      ran.append(random.choice(tier4))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(5):
-      ran = []
-      ran.append(random.choice(tier5))
-      giveitem(ran)
-      champs.append(ran)
-    un1 = random.choice(champs)
-    un2 = random.choice(champs)
-    un3 = random.choice(champs)
-    un4 = random.choice(champs)
-    un5 = random.choice(champs)
-  elif level == 7:
-    champs = []
-    for x in range(15):
-      ran = []
-      ran.append(random.choice(tier1))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(29):
-      ran = []
-      ran.append(random.choice(tier2))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(30):
-      ran = []
-      ran.append(random.choice(tier3))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(15):
-      ran = []
-      ran.append(random.choice(tier4))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(10):
-      ran = []
-      ran.append(random.choice(tier5))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(1):
-      ran = []
-      ran.append(random.choice(tier6))
-      giveitem(ran)
-      champs.append(ran)
-    un1 = random.choice(champs)
-    un2 = random.choice(champs)
-    un3 = random.choice(champs)
-    un4 = random.choice(champs)
-    un5 = random.choice(champs)
-  elif level == 8:
-    champs = []
-    for x in range(10):
-      ran = []
-      ran.append(random.choice(tier1))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(20):
-      ran = []
-      ran.append(random.choice(tier2))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(30):
-      ran = []
-      ran.append(random.choice(tier3))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(23):
-      ran = []
-      ran.append(random.choice(tier4))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(15):
-      ran = []
-      ran.append(random.choice(tier5))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(2):
-      ran = []
-      ran.append(random.choice(tier6))
-      giveitem(ran)
-      champs.append(ran)
-    un1 = random.choice(champs)
-    un2 = random.choice(champs)
-    un3 = random.choice(champs)
-    un4 = random.choice(champs)
-    un5 = random.choice(champs)
-  elif level == 9:
-    champs = []
-    for x in range(5):
-      ran = []
-      ran.append(random.choice(tier1))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(10):
-      ran = []
-      ran.append(random.choice(tier2))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(20):
-      ran = []
-      ran.append(random.choice(tier3))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(35):
-      ran = []
-      ran.append(random.choice(tier4))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(25):
-      ran = []
-      ran.append(random.choice(tier5))
-      giveitem(ran)
-      champs.append(ran)
-    for x in range(5):
-      ran = []
-      ran.append(random.choice(tier6))
-      giveitem(ran)
-      champs.append(ran)
-    un1 = random.choice(champs)
-    un2 = random.choice(champs)
-    un3 = random.choice(champs)
-    un4 = random.choice(champs)
-    un5 = random.choice(champs)
-  storelist = [un1,un2,un3,un4,un5]
-
-
-
 def mobs(person):
   prep()
   if person == "2 Freshmen": 
@@ -6586,12 +6626,12 @@ def game():
       for x in play:
         x.Level = 3
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 20
+        x.gold = x.gold + 15
       p1.prep("PvP")
     elif rnd == 3:
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 30
+        x.gold = x.gold + 20
       #Map effect 1
       p1.prep("PvP")
     elif rnd == 4:
@@ -6599,17 +6639,17 @@ def game():
       for x in play:
         x.Level = 4
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 30     
+        x.gold = x.gold + 20     
       p1.prep("PvP")
     elif rnd == 5:
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 50
+        x.gold = x.gold + 30
       p1.prep("Mrs. Miller")
     elif rnd == 6:
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 40
+        x.gold = x.gold + 30
       #2nd map effect
       p1.prep("PvP")
     elif rnd == 7:
@@ -6617,67 +6657,67 @@ def game():
       for x in play:
         x.Level = 5
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 30
+        x.gold = x.gold + 25
       p1.prep("PvP")
     elif rnd == 8:
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 30
+        x.gold = x.gold + 25
       p1.prep("PvP")
     elif rnd == 9:
       for x in play:
         x.Level = 6
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 40
+        x.gold = x.gold + 30
       #3rd map effect
       p1.prep("PvP")
     elif rnd == 10:
       carousel("5")
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 30
+        x.gold = x.gold + 25
       p1.prep("PvP")
     elif rnd == 11:
       for x in play:
         x.Level = 7
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 50
+        x.gold = x.gold + 40
       p1.prep("Mr. Pudup")
     elif rnd == 12:
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 40
+        x.gold = x.gold + 30
       #4th map effect
       p1.prep("PvP")
     elif rnd == 13:
       carousel("6")
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 30
+        x.gold = x.gold + 25
       p1.prep("PvP")
     elif rnd == 14:
       for x in play:
         x.Level = 8
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 30
+        x.gold = x.gold + 25
       p1.prep("PvP")
     elif rnd == 15:
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 40
+        x.gold = x.gold + 30
       #Final map effect
       p1.prep("PvP")
     elif rnd == 16:
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 50
+        x.gold = x.gold + 40
       p1.prep("Dr. Graham")
       for x in play:
         x.Level = 9
     else:
       for x in play:
         x.gold = math.floor(x.gold/2)
-        x.gold = x.gold + 30
+        x.gold = x.gold + 25
       p1.prep("PvP")
     
 def prebattleevent(pl1,pl2,skip=""):
@@ -7042,6 +7082,7 @@ def battle(pl1,pl2,skip=False):
   previous = ""
   turnstack = 0
   turncount = 0
+  overtime = False
   allfighters = []
   play1 = pl1
   play2 = pl2
@@ -7191,6 +7232,9 @@ def battle(pl1,pl2,skip=False):
       turnstack = 0
     previous = turn
     turncount = turncount + 1
+    if turncount > len(allfighters)*7.5 and overtime == False and skip == False:
+      overtime = True
+      print(style.BOLD+fore.YELLOW_1+"\nOVERTIME! (AT AND MAT ICNREASED BY 50%, HEALING REDUCED BY 33%)\n"+style.RESET)
     for x in pl1.team:
       if skip == True:
         if turn == x.ID:
@@ -7274,8 +7318,6 @@ def randombattle(pl1,pl2,rand=""):
   peep = [pl1,pl2]
   unit1  = tier1+tier2+tier3+tier4+tier5+tier6
   unit2  = tier1+tier2+tier3+tier4+tier5+tier6
-  unit1.remove("Jaidah")
-  unit2.remove("Jaidah")
   alt = 0
   if rand == "":
     for x in range(18):
@@ -7299,7 +7341,7 @@ def randombattle(pl1,pl2,rand=""):
         randomitems(pers)
   elif rand == "Abby":
     pl1.purchase("Abby",5,back=True)
-    pl1.team[0].items = ["Bloodrazor","Zulfiqar","Anatomy of Hearts","Flow of Wind","Duality","Thotslayer","Rally Banner","Honjo Masamune","Thornmail","Flaming Cinders","The Gambit","Chastity Belt","Obscene Wear","Miller's Hearing Aid","Critical Measure","Eternal","Care Package","Devourer","Cleats","Pearson Textbook","Endiness","Tryhard","Rulebook","Resource Catalyst","Giancoli Textbook","Last Say","Cross","Kahoot","God's Javelin","Bible","Hater Guard","Physics Equation Sheet","Vengeance","Sacred Scythe","Graham's Report"]
+    pl1.team[0].items = ["Bloodrazor","Zulfiqar","Anatomy of Hearts","Flow of Wind","Duality","Thotslayer","Rally Banner","Honjo Masamune","Thornmail","Flaming Cinders","The Gambit","Feminism","Obscene Wear","Miller's Hearing Aid","Critical Measure","Eternal","Care Package","Devourer","Cleats","Pearson Textbook","Endiness","Tryhard","Rulebook","Resource Catalyst","Giancoli Textbook","Last Say","Cross","Kahoot","God's Javelin","Bible","Hater Guard","Physics Equation Sheet","Vengeance","Sacred Scythe","Graham's Report"]
     pl1.team[0].setlevel(10000)
     pl1.team[0].color = pl1.colo
     pl1.team[0].SP = 3000
@@ -7362,48 +7404,61 @@ def randomitems(pers):
       pers.items.append(random.choice(fullitems))
 
 carousellist = []
-items = ["Attack","Defense","Magic Defense","Speed","Magic Attack","Health","Mana","Critical"]
-fullitems = ["Bloodrazor","Zulfiqar","Anatomy of Hearts","Flow of Wind","Duality","Thotslayer","Rally Banner","Honjo Masamune","Thornmail","Flaming Cinders","The Gambit","Chastity Belt","Obscene Wear","Miller's Hearing Aid","Critical Measure","Eternal","Care Package","Devourer","Cleats","Pearson Textbook","Endiness","Tryhard","Rulebook","Resource Catalyst","Giancoli Textbook","Last Say","Cross","Kahoot","God's Javelin","Bible","Hater Guard","Physics Equation Sheet","Vengeance","Sacred Scythe","Graham's Report"]
-tier1 = ["Jahir","Blandino","Octavio","Alvaro","Erick","Basel","Kholilur","James","Tahsin","Dylan","Siddarth","Andrew","Dereck","Ramirez","Anthony"]
+items = ("Attack","Defense","Magic Defense","Speed","Magic Attack","Health","Mana","Critical")
+fullitems = ("Bloodrazor","Zulfiqar","Anatomy of Hearts","Flow of Wind","Duality","Thotslayer","Rally Banner","Honjo Masamune","Thornmail","Flaming Cinders","The Gambit","Feminism","Obscene Wear","Miller's Hearing Aid","Critical Measure","Eternal","Care Package","Devourer","Cleats","Pearson Textbook","Endiness","Tryhard","Rulebook","Resource Catalyst","Giancoli Textbook","Last Say","Cross","Kahoot","God's Javelin","Bible","Hater Guard","Physics Equation Sheet","Vengeance","Sacred Scythe","Graham's Report")
+tier1 = ["Jahir","Blandino","Octavio","Erick","Basel","Kholilur","James","Tahsin","Dylan","Siddarth","Andrew","Dereck","Ramirez","Anthony","Handell"]
 tier2 = ["Edmond","Amber","Khalil","Hassan","Noah","Alberlyn","Zaid","Shannae","Shah","Jeremy","Matvey","Reema","Brian"]
-tier3 = ["Olivia","Jackie","David","Julius","Najely","Taylor","Metin","Jaidah","Kenny","John","Handell","Tyasia","Abida"]
-tier4 = ["Brandon","Tim","Mohammad","Richard","Ian","Keyur","Nicole","Arwyn","Lascelles"]
+tier3 = ["Olivia","Jackie","David","Julius","Najely","Taylor","Metin","Jaidah","Kenny","John","Tyasia","Abida","Alvaro"]
+tier4 = ["Brandon","Tim","Mohammad","Richard","Ian","Keyur","Nicole","Arwyn","Lascelles","Alice"]
 tier5 = ["Kylie","Kelly","Ishraq","Norman","Abby","Daniel"]
 tier6 = ["Amira"]
+
 AI = ["Wakim","Waluigi","Xehanort","Himekawa","Belle Delphine","Aizawa","Espinoza","Eldesouky","RJ","Salem","Josh","Ling Ling","Patrick","Flabby"]
 #AI = ["Wakim"]
+colors = ["red_1","magenta_1","green_1","yellow_1","cyan_1","dodger_blue_1","orange_red_1","green_3a","violet"]
+
 
 ID = 0
-yes = "nig"
-input("\nWhat is your name? ")
-color = "red_1"
+yes = input("\nWhat is your name? ")
+print("")
+bruh = 0
+while bruh == 0:
+  for x in colors:
+    print(fg(x)+"("+str(colors.index(x)+1)+")")
+  color = input(style.RESET+"\nChoose a color: ")
+  if color.isdigit() and color != "0": 
+    if int(color) <= 9:
+      
+      bruh = 1
+  
+
 p1 = Player(yes,1,color)
-hoesmad = random.choice(AI)
-color = "green_1"
-p2 = Player(hoesmad,2,color)
-AI.remove(hoesmad)
-hoesmad = random.choice(AI)
-color = "green_1"
-p3 = Player(hoesmad,3,color)
-AI.remove(hoesmad)
-hoesmad = random.choice(AI)
-p4 = Player(hoesmad,4,color)
-AI.remove(hoesmad)
-hoesmad = random.choice(AI)
-p5 = Player(hoesmad,5,color)
-AI.remove(hoesmad)
-hoesmad = random.choice(AI)
-p6 = Player(hoesmad,6,color)
-AI.remove(hoesmad)
-hoesmad = random.choice(AI)
-p7 = Player(hoesmad,7,color)
-AI.remove(hoesmad)
-hoesmad = random.choice(AI)
-p8 = Player(hoesmad,8,color)
+randomAI = random.choice(AI)
+color = "green_3a"
+p2 = Player(randomAI,2,color)
+AI.remove(randomAI)
+randomAI = random.choice(AI)
+color = "magenta_1"
+p3 = Player(randomAI,3,color)
+AI.remove(randomAI)
+randomAI = random.choice(AI)
+color = "yellow_1"
+p4 = Player(randomAI,4,color)
+AI.remove(randomAI)
+randomAI = random.choice(AI)
+color = "magenta_1"
+p5 = Player(randomAI,5,color)
+AI.remove(randomAI)
+randomAI = random.choice(AI)
+p6 = Player(randomAI,6,color)
+AI.remove(randomAI)
+randomAI = random.choice(AI)
+p7 = Player(randomAI,7,color)
+AI.remove(randomAI)
+randomAI = random.choice(AI)
+p8 = Player(randomAI,8,color)
 
-
-
-
+randombattle(p1,p2)
 play = [p1,p2,p3,p4,p5,p6,p7]
 opponents = [p2,p3,p4,p5,p6,p7]
 ghost = 0
